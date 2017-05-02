@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ScorecardPage } from '../scorecard-page/scorecard-page';
 
 /**
  * Generated class for the LobbyPage page.
@@ -19,6 +20,10 @@ export class LobbyPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LobbyPage');
+  }
+  
+  startScorecard() {
+    this.navCtrl.push(ScorecardPage);
   }
 
 }

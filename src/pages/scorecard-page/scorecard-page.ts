@@ -7,13 +7,7 @@ import { LobbyPage } from '../lobby-page/lobby-page';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-// let apiBaskets = [{
-//   "basketNumber": 1
-//   },{
-//   "basketNumber": 2
-//   },{
-//   "basketNumber": 3
-// }]
+
 
 @IonicPage()
 @Component({
@@ -24,12 +18,50 @@ export class ScorecardPage {
   @ViewChild(Slides) slides: Slides;
   par: number;
   score: number;
-  baskets: any = [];
-  basketResult: any = {};
+  basketsArray: any = [];
+  basket: any = {};
+  apiBaskets = [{
+  "basketTitle": 1
+  },{
+  "basketTitle": 2
+  },{
+  "basketTitle": 3
+  },{
+  "basketTitle": 4
+  },{
+  "basketTitle": 5
+  },{
+  "basketTitle": 6
+  },{
+  "basketTitle": 7
+  },{
+  "basketTitle": 8
+  },{
+  "basketTitle": 9
+  },{
+  "basketTitle": 10
+  },{
+  "basketTitle": 11
+  },{
+  "basketTitle": 12
+  },{
+  "basketTitle": 13
+  },{
+  "basketTitle": 14
+  },{
+  "basketTitle": 15
+  },{
+  "basketTitle": 16
+  },{
+  "basketTitle": 17
+  },{
+  "basketTitle": 18
+  }];
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     console.log(this.par);
-    console.log(this.score);
-    this.basketResult = {
+    console.log(this.basketsArray);
+    this.basket = {
       "par": 0,
       "score": 0
     }
@@ -39,21 +71,24 @@ export class ScorecardPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ScorecardPage');
     //this.slides.lockSwipes(true);
-     console.log(this.basketResult);
+    console.log(this.basket);
     
   }  
-    slideNext() {
-      console.log(this.basketResult);
-      this.basketResult++;
-      if(this.slides.getActiveIndex() + 1 !== 18) {
+    slideNext(basketResult) {
+      console.log(basketResult);
+      
+      if(this.slides.getActiveIndex() + 1 !== this.apiBaskets.length) {
         //this.slides.lockSwipes(false);
+        this.basketsArray.push(this.basket);
         this.slides.slideTo(this.slides.getActiveIndex() +1);
         //this.slides.lockSwipes(true);  
+        console.log(this.basketsArray);
       } else {
-        let result: any = JSON.parse(window.localStorage.getItem("result")) || [];
-        this.basketResult.createDate = new Date().toISOString();
-        result.push(this.basketResult.basket);
-        window.localStorage.setItem("result", JSON.stringify(result));
+        window.localStorage.setItem("basketsArray", JSON.stringify(this.basketsArray));
+        // let result: any = JSON.parse(window.localStorage.getItem("result")) || [];
+        // this.basket.createDate = new Date().toISOString();
+        // basketsArray.push(this.basket);
+        // window.localStorage.setItem("result", JSON.stringify(result));
         this.navCtrl.setRoot(LobbyPage);
       
     }

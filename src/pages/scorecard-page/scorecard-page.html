@@ -6,20 +6,20 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="secondary" text-center>
     <ion-title>Scorecard</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-  <ion-slides pager>
+<ion-content text-center padding>
+  <ion-slides pager paginationType ="fraction">
     <ion-slide>
       <ion-list>
         <ion-item>
-          <ion-label>Par</ion-label>
-          <ion-select [(ngModel)]="par" text-center>
+          <ion-label>PAR</ion-label>
+          <ion-select [(ngModel)]="basket.par" text-center>
             <ion-option value="1">1</ion-option>
             <ion-option value="2">2</ion-option>
             <ion-option value="3">3</ion-option>
@@ -28,11 +28,11 @@
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-label text-center>Score</ion-label>
-          <ion-input type="number" placeholder="Number of Throws"></ion-input>
+          <ion-label>SCORE</ion-label>
+          <ion-input [(ngModel)]="basket.score" text-right type="number" placeholder="Number of Throws" ></ion-input>
         </ion-item>
       </ion-list>
     </ion-slide>
   </ion-slides>
-
+  <button ion-button round (click)="slideNext()">Submit Score for this Basket</button>
 </ion-content>

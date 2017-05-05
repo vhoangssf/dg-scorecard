@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
-import { LobbyPage } from '../lobby-page/lobby-page';
+import { ResultsPage } from '../results-page/results-page';
 /**
  * Generated class for the ScorecardPage page.
  *
@@ -17,8 +17,8 @@ import { LobbyPage } from '../lobby-page/lobby-page';
 export class ScorecardPage {
   @ViewChild(Slides) slides: Slides;
   par: number;
-  score: number;
-  basketsArray: any = [];
+  throws: number;
+  
   basket: any = {};
   apiBaskets = [{
   "basketTitle": 1
@@ -26,7 +26,7 @@ export class ScorecardPage {
   "basketTitle": 2
   },{
   "basketTitle": 3
-  },{
+  /*},{
   "basketTitle": 4
   },{
   "basketTitle": 5
@@ -55,7 +55,7 @@ export class ScorecardPage {
   },{
   "basketTitle": 17
   },{
-  "basketTitle": 18
+  "basketTitle": 18*/
   }];
   
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -63,7 +63,7 @@ export class ScorecardPage {
     console.log(this.basketsArray);
     this.basket = {
       "par": 0,
-      "score": 0
+      "throws": 0
     }
   }
 
@@ -74,22 +74,27 @@ export class ScorecardPage {
     console.log(this.basket);
     
   }  
+    basketsArray: any = [];
     slideNext(basketResult) {
       console.log(basketResult);
-      
+      this.basketsArray.push(basketResult);
       if(this.slides.getActiveIndex() + 1 !== this.apiBaskets.length) {
         //this.slides.lockSwipes(false);
-        this.basketsArray.push(this.basket);
-        this.slides.slideTo(this.slides.getActiveIndex() +1);
+        
+        this.slides.slideTo(this.slides.getActiveIndex() +1 );
         //this.slides.lockSwipes(true);  
-        console.log(this.basketsArray);
+        
       } else {
+        
+        
+        //let results: any = JSON.parse(window.localStorage.getItem("results")) || [];
+        //this..createDate = new Date().toISOString();
+        //this.basketsArray.push(this.basket);
         window.localStorage.setItem("basketsArray", JSON.stringify(this.basketsArray));
-        // let result: any = JSON.parse(window.localStorage.getItem("result")) || [];
-        // this.basket.createDate = new Date().toISOString();
-        // basketsArray.push(this.basket);
-        // window.localStorage.setItem("result", JSON.stringify(result));
-        this.navCtrl.setRoot(LobbyPage);
+        console.log("here is the final basketsArray" + this.basketsArray);
+        this.navCtrl.setRoot(ResultsPage, {
+          results: this.basketsArray
+        });
       
     }
   // submitScore(par, score){

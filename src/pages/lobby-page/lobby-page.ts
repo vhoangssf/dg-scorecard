@@ -25,5 +25,5 @@ export class LobbyPage {
   startScorecard() {
     this.navCtrl.push(ScorecardPage);
   }
-
+  
 }

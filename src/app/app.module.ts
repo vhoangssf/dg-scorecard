@@ -7,11 +7,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { LobbyPage } from '../pages/lobby-page/lobby-page';
 import { ScorecardPage } from '../pages/scorecard-page/scorecard-page';
+import { ResultsPage } from '../pages/results-page/results-page';
 
 let injections = [
   MyApp,
   LobbyPage,
-  ScorecardPage
+  ScorecardPage,
+  ResultsPage
   ]
 
 @NgModule({

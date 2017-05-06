@@ -8,12 +8,14 @@ import { MyApp } from './app.component';
 import { LobbyPage } from '../pages/lobby-page/lobby-page';
 import { ScorecardPage } from '../pages/scorecard-page/scorecard-page';
 import { ResultsPage } from '../pages/results-page/results-page';
+import { HistoryPage } from '../pages/history-page/history-page';
 
 let injections = [
   MyApp,
   LobbyPage,
   ScorecardPage,
-  ResultsPage
+  ResultsPage,
+  HistoryPage
   ]
 
 @NgModule({

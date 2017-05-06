@@ -8,6 +8,9 @@
 
   <ion-navbar>
     <ion-title>ResultsPage</ion-title>
+    <button ion-button (click)="goLobby()" icon-only>
+      <ion-icon name="home"></ion-icon>
+      </button>
   </ion-navbar>
 
 </ion-header>
@@ -29,7 +32,7 @@
       <ion-col col-3>{{result.score}}</ion-col>
     </ion-row>
     <ion-row>
-      <ion-col col-3 offset-9></ion-col>
+      <ion-col col-3 offset-9>Total Score: {{this.sum}}</ion-col>
     </ion-row>
   </ion-grid>
   

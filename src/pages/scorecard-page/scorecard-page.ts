@@ -23,9 +23,9 @@ export class ScorecardPage {
   "basketTitle": 1
   },{
   "basketTitle": 2
-  /*},{
-  "basketTitle": 3
   },{
+  "basketTitle": 3
+  /*},{
   "basketTitle": 4
   },{
   "basketTitle": 5
@@ -78,8 +78,8 @@ export class ScorecardPage {
     slideNext(basket) {
       //two way binding, combine the par and throws into a local object
       let basketRes = {
-        par: basket.par,
-        throws: basket.throws,
+        par: parseInt(basket.par),
+        throws: parseInt(basket.throws),
         score: basket.throws - basket.par
       }
       console.log(basket);

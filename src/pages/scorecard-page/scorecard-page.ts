@@ -65,13 +65,8 @@ export class ScorecardPage {
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad ScorecardPage');
-    //this.slides.lockSwipes(true);
-   // console.log(this.basket);
-  // this.basket = {
-  //     "par": 0,
-  //     "throws": 0
-  //   }
-    
+    this.slides.lockSwipes(true);
+
   }  
     
   
@@ -93,7 +88,8 @@ export class ScorecardPage {
         this.slides.slideTo(this.slides.getActiveIndex() +1 );
         this.slides.lockSwipes(true);  
       } else {
-        console.log("here is the final basketsArray", this.basketsArray);
+        //create the date for finishing the round of disc golf, 
+        //send user to results page along with the data
         let scorecard = this.createDate(this.basketsArray);
         this.navCtrl.setRoot(ResultsPage, {
           results: scorecard

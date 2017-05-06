@@ -21,6 +21,7 @@ export class HistoryPage {
   scorecard: any;
   ionViewDidLoad() {
     console.log('ionViewDidLoad HistoryPage');
+    //retrieve locally stored data
     this.scorecard = JSON.parse(window.localStorage.getItem("scorecard"));
     console.log("scorecard", this.scorecard);
     

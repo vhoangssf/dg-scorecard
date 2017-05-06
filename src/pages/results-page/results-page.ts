@@ -22,8 +22,19 @@ export class ResultsPage {
     ) {
       this.results = navParams.get('results');
       console.log(navParams.get('results'));
+      this.totalScore(this.results);
   }
   
+  // calculate total score
+  totalScore(results) {
+    for(let i = 0; i < results.length; i++){
+      let sum; 
+      sum += results[i].score;
+     console.log("sum", sum);
+    }
+      
+    
+  }
   
   
   ionViewDidLoad() {

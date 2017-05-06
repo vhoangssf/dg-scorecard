@@ -18,15 +18,14 @@ export class ScorecardPage {
   @ViewChild(Slides) slides: Slides;
   par: number;
   throws: number;
-  
-  basket: any = {};
+  basketsArray: any = [];
   apiBaskets = [{
   "basketTitle": 1
   },{
   "basketTitle": 2
-  },{
-  "basketTitle": 3
   /*},{
+  "basketTitle": 3
+  },{
   "basketTitle": 4
   },{
   "basketTitle": 5
@@ -60,50 +59,49 @@ export class ScorecardPage {
   
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     console.log(this.par);
-    console.log(this.basketsArray);
-    this.basket = {
-      "par": 0,
-      "throws": 0
-    }
+    
   }
 
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad ScorecardPage');
     //this.slides.lockSwipes(true);
-    console.log(this.basket);
+   // console.log(this.basket);
+  // this.basket = {
+  //     "par": 0,
+  //     "throws": 0
+  //   }
     
   }  
-    basketsArray: any = [];
-    slideNext(basketResult) {
-      console.log(basketResult);
-      this.basketsArray.push(basketResult);
+    
+  
+    slideNext(basket) {
+      //two way binding, combine the par and throws into a local object
+      let basketRes = {
+        par: basket.par,
+        throws: basket.throws,
+        score: basket.throws - basket.par
+      }
+      console.log(basket);
+      this.basketsArray.push(basketRes);
+      console.log(this.basketsArray);
+      console.log(this.slides.getActiveIndex());
       if(this.slides.getActiveIndex() + 1 !== this.apiBaskets.length) {
+        console.log("this is the beginning basketsArray", this.basketsArray);
         //this.slides.lockSwipes(false);
-        
         this.slides.slideTo(this.slides.getActiveIndex() +1 );
         //this.slides.lockSwipes(true);  
-        
       } else {
-        
-        
         //let results: any = JSON.parse(window.localStorage.getItem("results")) || [];
         //this..createDate = new Date().toISOString();
         //this.basketsArray.push(this.basket);
-        window.localStorage.setItem("basketsArray", JSON.stringify(this.basketsArray));
-        console.log("here is the final basketsArray" + this.basketsArray);
+        // window.localStorage.setItem("basketsArray", JSON.stringify(this.basketsArray));
+        console.log("here is the final basketsArray", this.basketsArray);
         this.navCtrl.setRoot(ResultsPage, {
           results: this.basketsArray
         });
       
-    }
-  // submitScore(par, score){
-  //   nextslide();
-    
-  //CREATE A ngSubmit FORM!!! just like appUsers from TKTest 
-  //ngSubmit will push it into apiScorecard
-  //focus on binding inputs and selects (par and score) #template variable
-  //use TKTest 
-  //}
+      }
+ 
     }
 }

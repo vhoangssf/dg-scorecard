@@ -16,23 +16,24 @@
 <ion-content text-center padding>
   <ion-slides pager paginationType ="fraction">
     <ion-slide *ngFor="let apiBasket of apiBaskets">
-      <ion-list>Basket {{apiBasket.basketTitle}}
+      <ion-list #basket>Basket {{apiBasket.basketTitle}}
         <ion-item>
           <ion-label>PAR</ion-label>
-          <ion-select [(ngModel)]="basket.par" required text-center>
+          <ion-select [(ngModel)]="basket.par" #par text-center>
             <ion-option value="1">1</ion-option>
             <ion-option value="2">2</ion-option>
             <ion-option value="3">3</ion-option>
             <ion-option value="4">4</ion-option>
             <ion-option value="5">5</ion-option>
           </ion-select>
+          <!--<ion-input [(ngModel)]="basket.par" required text-right type="number" placeholder></ion-input>-->
         </ion-item>
         <ion-item>
           <ion-label>THROWS</ion-label>
-          <ion-input [(ngModel)]="basket.throws" required text-right type="number" placeholder="Number of Throws" ></ion-input>
+          <ion-input [(ngModel)]="basket.throws" #throws text-right type="number" placeholder="Number of Throws" ></ion-input>
         </ion-item>
       </ion-list>
-      <button ion-button round (click)="slideNext(this.basket)">Submit Score for this Basket</button>
+      <button ion-button round type="submit" (click)="slideNext(basket)">Submit Score for this Basket</button>
     </ion-slide>
   </ion-slides>
 </ion-content>

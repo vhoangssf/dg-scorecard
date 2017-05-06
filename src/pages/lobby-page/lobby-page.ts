@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ScorecardPage } from '../scorecard-page/scorecard-page';
-
+import { HistoryPage } from '../history-page/history-page';
 /**
  * Generated class for the LobbyPage page.
  *
@@ -25,5 +25,7 @@ export class LobbyPage {
   startScorecard() {
     this.navCtrl.push(ScorecardPage);
   }
-  
+  goHistory() {
+    this.navCtrl.push(HistoryPage)
+  }
 }

@@ -17,21 +17,25 @@ export class ResultsPage {
 
   results: any;
   sum: any;
+  scorecard: any;
   
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     ) {
-      this.results = navParams.get('results');
+      this.scorecard = navParams.get('results');
+      this.results = this.scorecard.results;
       console.log(navParams.get('results'));
-      this.sum = this.totalScore(this.results);
+      this.sum = this.totalScore(this.scorecard);
+      window.localStorage.setItem("scorecard", JSON.stringify(this.scorecard));
   }
   
+  
   // calculate total score
-  totalScore(results) {
+  totalScore(scorecard) {
     let sum = 0;
-    for(var i = 0; i < results.length; i++) {
-      sum = sum + results[i].score;
+    for(var i = 0; i < scorecard.results.length; i++) {
+      sum = sum + scorecard.results[i].score;
     }
     console.log("sum", sum);
     return sum;

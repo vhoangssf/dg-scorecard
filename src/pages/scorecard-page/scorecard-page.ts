@@ -80,28 +80,35 @@ export class ScorecardPage {
       let basketRes = {
         par: parseInt(basket.par),
         throws: parseInt(basket.throws),
-        score: basket.throws - basket.par
+        score: basket.throws - basket.par,
       }
+      
       console.log(basket);
       this.basketsArray.push(basketRes);
       console.log(this.basketsArray);
       console.log(this.slides.getActiveIndex());
       if(this.slides.getActiveIndex() + 1 !== this.apiBaskets.length) {
         console.log("this is the beginning basketsArray", this.basketsArray);
-        //this.slides.lockSwipes(false);
+        this.slides.lockSwipes(false);
         this.slides.slideTo(this.slides.getActiveIndex() +1 );
-        //this.slides.lockSwipes(true);  
+        this.slides.lockSwipes(true);  
       } else {
-        //let results: any = JSON.parse(window.localStorage.getItem("results")) || [];
-        //this..createDate = new Date().toISOString();
-        //this.basketsArray.push(this.basket);
-        // window.localStorage.setItem("basketsArray", JSON.stringify(this.basketsArray));
         console.log("here is the final basketsArray", this.basketsArray);
+        let scorecard = this.createDate(this.basketsArray);
         this.navCtrl.setRoot(ResultsPage, {
-          results: this.basketsArray
+          results: scorecard
         });
       
       }
- 
+      
     }
+
+  //create new object and date created
+  createDate(results){
+    let scorecard = {
+      date: new Date().toISOString(),
+      results: results
+    };
+    return scorecard;
+  }
 }

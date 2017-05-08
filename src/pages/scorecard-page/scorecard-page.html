@@ -9,34 +9,34 @@
   <ion-navbar color="secondary" text-center>
     <ion-title>Scorecard</ion-title>
   </ion-navbar>
-
+    
 </ion-header>
 
 
-<ion-content text-center padding>
+<ion-content text-center>
   <ion-slides pager paginationType ="fraction">
     <ion-slide *ngFor="let apiBasket of apiBaskets">
-      <ion-list #basket>Basket {{apiBasket.basketTitle}}
+      <ion-list #basket padding>Basket {{apiBasket.basketTitle}}
         <ion-list radio-group [(ngModel)]="basket.par" #par>
           <ion-list-header text-left>Please Select Par</ion-list-header>
             <ion-item>
-              <ion-label>One</ion-label>
+              <ion-label>Par One</ion-label>
                 <ion-radio checked="false" value="1"></ion-radio>
             </ion-item>
             <ion-item>
-              <ion-label>Two</ion-label>
+              <ion-label>Par Two</ion-label>
                 <ion-radio checked="false" value="2"></ion-radio>
             </ion-item>
             <ion-item>
-              <ion-label>Three</ion-label>
+              <ion-label>Par Three</ion-label>
                 <ion-radio checked="false" value="3"></ion-radio>
             </ion-item>
             <ion-item>
-              <ion-label>Four</ion-label>
+              <ion-label>Par Four</ion-label>
                 <ion-radio checked="false" value="4"></ion-radio>
             </ion-item>
             <ion-item>
-              <ion-label>Five</ion-label>
+              <ion-label>Par Five</ion-label>
                 <ion-radio checked="false" value="5"></ion-radio>
             </ion-item>
         </ion-list>
@@ -56,7 +56,7 @@
           <ion-input [(ngModel)]="basket.throws" #throws text-right type="number" placeholder="Number of Throws" ></ion-input>
         </ion-item>
       </ion-list>
-      <button ion-button round type="submit" (click)="slideNext(basket)">Submit Score for this Basket</button>
+      <button ion-button color="secondary" round type="submit" (click)="slideNext(basket)">Submit Score for this Basket</button>
     </ion-slide>
   </ion-slides>
 </ion-content>

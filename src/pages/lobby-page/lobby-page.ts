@@ -16,6 +16,7 @@ import { HistoryPage } from '../history-page/history-page';
 export class LobbyPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    
   }
 
   ionViewDidLoad() {

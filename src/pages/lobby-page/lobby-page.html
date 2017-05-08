@@ -7,18 +7,20 @@
 <ion-header>
 
   <ion-navbar color="secondary" text-center>
-    <ion-title>Lobby</ion-title>
+    <ion-title>Disc Golf Scorecard</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content text-center padding>
-  <button ion-button  color="secondary" round icon-right (click)="startScorecard()">
+<ion-content text-center padding color="dark">
+  <img padding src="http://www.clipartkid.com/images/98/disc-golf-fanatic-course-guide-uogN7F-clipart.png">
+  <br>
+  <button ion-button color="secondary" round icon-right (click)="startScorecard()">
     Start New Scorecard
     <ion-icon name="play"></ion-icon>
   </button>
-  <button ion-button  color="secondary" round icon-right (click)="goHistory()">
+  <button ion-button color="secondary" round icon-right (click)="goHistory()">
     View Previous Scarecards
     <ion-icon name="clipboard"></ion-icon>
   </button>

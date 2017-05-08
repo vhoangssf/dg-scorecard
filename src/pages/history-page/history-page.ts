@@ -13,18 +13,23 @@ import { ResultsPage } from '../results-page/results-page';
   templateUrl: 'history-page.html',
 })
 export class HistoryPage {
+  scorecard: any = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    
+    // let date = this.scorecard.date;
+    // console.log("date reassign", date);
+    
   }
   
   
-  scorecard: any;
+  //scorecard: any;
   ionViewDidLoad() {
     console.log('ionViewDidLoad HistoryPage');
     //retrieve locally stored data
     this.scorecard = JSON.parse(window.localStorage.getItem("scorecard"));
     console.log("scorecard", this.scorecard);
-    
+    console.log("date", this.scorecard.date);
   }
   
   goToResult(scorecard) {

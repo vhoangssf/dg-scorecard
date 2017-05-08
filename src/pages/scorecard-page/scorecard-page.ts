@@ -83,7 +83,7 @@ export class ScorecardPage {
       console.log(this.basketsArray);
       console.log(this.slides.getActiveIndex());
       if(this.slides.getActiveIndex() + 1 !== this.apiBaskets.length) {
-        console.log("this is the beginning basketsArray", this.basketsArray);
+        console.log("basketsArray", this.basketsArray);
         this.slides.lockSwipes(false);
         this.slides.slideTo(this.slides.getActiveIndex() +1 );
         this.slides.lockSwipes(true);  

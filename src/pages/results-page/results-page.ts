@@ -27,9 +27,16 @@ export class ResultsPage {
       this.results = this.scorecard.results;
       console.log(navParams.get('results'));
       this.sum = this.totalScore(this.scorecard);
+      //store the scorecard in the local storage
       window.localStorage.setItem("scorecard", JSON.stringify(this.scorecard));
   }
   
+  // replace -1 with birdie -2 with eagle
+  // inputBird(score) {
+  //   if(score === -1) {
+      
+  //   }
+  // }
   
   // calculate total score
   totalScore(scorecard) {

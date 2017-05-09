@@ -3,8 +3,9 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
+import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
+
 import { LobbyPage } from '../pages/lobby-page/lobby-page';
 import { ScorecardPage } from '../pages/scorecard-page/scorecard-page';
 import { ResultsPage } from '../pages/results-page/results-page';
@@ -16,7 +17,7 @@ import { LoginPage } from '../pages/login-page/login-page';
 import { AppUser } from '../providers/app-user';
 import { Scorecard } from '../providers/scorecard';
 
-let injections = [
+let injections: any[] = [
   MyApp,
   LobbyPage,
   ScorecardPage,
@@ -31,6 +32,7 @@ let injections = [
   declarations: injections,
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -38,9 +40,9 @@ let injections = [
   providers: [
     StatusBar,
     SplashScreen,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
     AppUser,
-    Scorecard,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    Scorecard
   ]
 })
 export class AppModule {}

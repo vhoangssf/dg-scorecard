@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { LobbyPage } from '../lobby-page/lobby-page';
+
 import { AppUser } from '../../providers/app-user';
 
 /**
@@ -23,6 +25,24 @@ export class RegisterPage {
     }
     
     this.appUser.register(this.user)
+      .map(res => res.json())
+      .subscribe(res => {
+        //hand successful responses and decide what happens next
+        window.localStorage.setItem('token', res.token);
+        window.localStorage.setItem('userId', res.id);  
+        this.navCtrl.setRoot(LobbyPage);
+      }, error => {
+        //inform the user of any known problems that arose, otherwise give a generic failed message
+        if (error.status === 404) {
+          return alert("404: Not Found.");
+          } else if (error.status === 422) {
+          return alert("422: Invalid Email entered/email is already taken."); 
+          } else if (error.status === 500) {
+          return alert("500: The world has ended, or the server just isn't online");
+      }
+      });
+        
+        
   }
   
   constructor(

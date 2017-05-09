@@ -14,5 +14,25 @@
 
 
 <ion-content padding>
-
+ <form #registerForm="ngForm" (ngSubmit)="signupForm(registerForm)" novalidate>
+    <ion-item>
+      <ion-label>First Name</ion-label>
+      <ion-input name="firstName" type="text" [(ngModel)]="user.firstName" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Last Name</ion-label>
+      <ion-input name="lastName" type="text" [(ngModel)]="user.lastName" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input name="email" type="email" placeholder="john@doe.com" [(ngModel)]="user.email" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input name="password" type="password" [(ngModel)]="user.password" required></ion-input>
+    </ion-item>
+    <button ion-button type="submit" class="button-block">
+      Register
+    </button>
+  </form>
 </ion-content>

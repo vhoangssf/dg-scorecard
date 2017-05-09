@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ScorecardPage } from '../scorecard-page/scorecard-page';
 import { HistoryPage } from '../history-page/history-page';
+import { LandingPage } from '../landing-page/landing-page';
+
+import { AppUser } from '../../providers/app-user';
+
 /**
  * Generated class for the LobbyPage page.
  *
@@ -15,7 +19,11 @@ import { HistoryPage } from '../history-page/history-page';
 })
 export class LobbyPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public appUser: AppUser
+    ) {
     
   }
 
@@ -28,5 +36,13 @@ export class LobbyPage {
   }
   goHistory() {
     this.navCtrl.push(HistoryPage)
+  }
+  
+  userLogout() {
+    this.appUser.logout(window.localStorage.token)
+    window.localStorage.token = null;
+    window.localStorage.userId = null;
+    this.navCtrl.setRoot(LandingPage);
+    console.log('User has logged out');
   }
 }

@@ -9,13 +9,22 @@ import { LobbyPage } from '../pages/lobby-page/lobby-page';
 import { ScorecardPage } from '../pages/scorecard-page/scorecard-page';
 import { ResultsPage } from '../pages/results-page/results-page';
 import { HistoryPage } from '../pages/history-page/history-page';
+import { LandingPage } from '../pages/landing-page/landing-page';
+import { RegisterPage } from '../pages/register-page/register-page';
+import { LoginPage } from '../pages/login-page/login-page';
+
+import { AppUser } from '../providers/app-user';
+import { Scorecard } from '../providers/scorecard';
 
 let injections = [
   MyApp,
   LobbyPage,
   ScorecardPage,
   ResultsPage,
-  HistoryPage
+  HistoryPage,
+  LandingPage,
+  RegisterPage,
+  LoginPage
   ]
 
 @NgModule({
@@ -29,6 +38,8 @@ let injections = [
   providers: [
     StatusBar,
     SplashScreen,
+    AppUser,
+    Scorecard,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

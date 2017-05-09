@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LobbyPage } from '../lobby-page/lobby-page';
 
+
 /**
  * Generated class for the ResultsPage page.
  *
@@ -21,28 +22,24 @@ export class ResultsPage {
   
   constructor(
     public navCtrl: NavController, 
-    public navParams: NavParams,
+    public navParams: NavParams
     ) {
       this.scorecard = navParams.get('results');
-      this.results = this.scorecard.results;
       console.log(navParams.get('results'));
       this.sum = this.totalScore(this.scorecard);
-      //store the scorecard in the local storage
-      window.localStorage.setItem("scorecard", JSON.stringify(this.scorecard));
-  }
-  
-  // replace -1 with birdie -2 with eagle
-  // inputBird(score) {
-  //   if(score === -1) {
       
-  //   }
-  // }
+      //store the scorecard in the local storage
+      //window.localStorage.setItem("scorecard", JSON.stringify(this.scorecard));
+      
+     
+      
+  }
   
   // calculate total score
   totalScore(scorecard) {
     let sum = 0;
-    for(var i = 0; i < scorecard.results.length; i++) {
-      sum = sum + scorecard.results[i].score;
+    for(var i = 0; i < scorecard.score.length; i++) {
+      sum = sum + scorecard.score[i];
     }
     console.log("sum", sum);
     return sum;
@@ -54,6 +51,7 @@ export class ResultsPage {
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad ResultsPage');
+    
     
   }
 

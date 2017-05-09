@@ -14,5 +14,21 @@ export class Scorecard {
   constructor(public http: Http) {
     console.log('Hello Scorecard Provider');
   }
-
+  
+  baseUrl: string = 'http://sp-17-vincent-jbrownssf.c9users.io:8080/api/'
+  path: string = '/Scorecards'
+  
+  saveScorecard(scorecard, token) {
+      return this.http.post(
+        this.baseUrl + this.path + '?access_token=' + token,
+        scorecard
+        );
+  }
+  
+  getScorecard(token) {
+    return this.http.get(
+      this.baseUrl + this.path + '?access_token=' + token,
+      {}
+      );
+  }
 }

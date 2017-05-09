@@ -25,11 +25,19 @@
       <ion-col col-3>Throws</ion-col>
       <ion-col col-3>Score</ion-col>
     </ion-row>
-    <ion-row *ngFor="let result of results; index as i">
-      <ion-col col-3>{{i+1}}</ion-col>
-      <ion-col col-3>{{result.par}}</ion-col>
-      <ion-col col-3>{{result.throws}}</ion-col>
-      <ion-col col-3>{{result.score}}</ion-col>
+    <ion-row>
+      <ion-col col-3>
+        <ion-row text-center *ngFor="let basket of scorecard.basketNumber">{{basket}}</ion-row>
+      </ion-col>
+      <ion-col col-3>
+        <ion-row text-center *ngFor="let par of scorecard.par">{{par}}</ion-row>
+      </ion-col>
+      <ion-col col-3>
+        <ion-row text-center *ngFor="let throw of scorecard.throws">{{throw}}</ion-row>
+      </ion-col>
+      <ion-col col-3>
+        <ion-row text-center *ngFor="let score of scorecard.score">{{score}}</ion-row>
+      </ion-col>
     </ion-row>
     <ion-row>
       <ion-col col-3 offset-9>Total Score: {{this.sum}}</ion-col>

@@ -25,4 +25,11 @@ export class AppUser {
       );
   }
   
+  login(userData) {
+    return this.http.post(
+      this.baseUrl + this.path + "/login",
+      userData
+      );
+  }
+  
 }

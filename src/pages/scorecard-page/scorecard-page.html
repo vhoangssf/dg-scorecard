@@ -29,7 +29,7 @@
             </ion-item>
             <ion-item>
               <ion-label>Par Three</ion-label>
-                <ion-radio checked="false" value="3"></ion-radio>
+                <ion-radio checked="true" value="3"></ion-radio>
             </ion-item>
             <ion-item>
               <ion-label>Par Four</ion-label>
@@ -53,7 +53,7 @@
         <!--</ion-item>-->
         <ion-item>
           <ion-label>Attempts</ion-label>
-          <ion-input [(ngModel)]="basket.throws" #throws text-right type="number" placeholder="Number of Throws" ></ion-input>
+          <ion-input [(ngModel)]="basket.throws" #throws text-right type="number" placeholder="Number of Throws" required></ion-input>
         </ion-item>
       </ion-list>
       <button ion-button color="secondary" round type="submit" (click)="slideNext(basket)">Submit Score for this Basket</button>

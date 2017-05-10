@@ -17,6 +17,15 @@ import { LobbyPage } from '../lobby-page/lobby-page';
 export class LoginPage {
   
   user: any = {}
+  
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public appUser: AppUser
+    ) {
+      window.localStorage.clear();
+  }
+  
   loginForm(form) {
     if(form.invalid) {
       return alert("Please fill in your email and password");
@@ -26,30 +35,24 @@ export class LoginPage {
     .map(res => res.json())
     .subscribe(res => {
       // handle successful responses and decide what happens next
+      console.log(res);
       window.localStorage.setItem('token', res.id);
       window.localStorage.setItem('userId', res.userId);
       this.navCtrl.setRoot(LobbyPage);
     }, error => {
       // inform the user of any known problems that arose, otherwise give a generic failed message
       if (error.status === 404) {
-        return alert("404: Not Found.");
+        return alert("Not Found.");
           } else if (error.status === 500) {
-            return alert("500: The world has ended, or the server just isn't online");
+            return alert("The world has ended, or the server just isn't online");
           } else if (error.status === 401) {
-            return alert("401: Missing or invalid authentication token")
+            return alert("Incorrect Password")
           } else if (error.status === 422) {
-            return alert("422: Unprocessable Entity")
+            return alert("Unprocessable Entity")
           }
       
     });
     
-  }
-  
-  constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams,
-    public appUser: AppUser
-    ) {
   }
 
   ionViewDidLoad() {

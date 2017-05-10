@@ -28,7 +28,7 @@ export class ScorecardPage {
   "basketTitle": 2
   },{
   "basketTitle": 3
-  /*},{
+  },{
   "basketTitle": 4
   },{
   "basketTitle": 5
@@ -57,7 +57,7 @@ export class ScorecardPage {
   },{
   "basketTitle": 17
   },{
-  "basketTitle": 18*/
+  "basketTitle": 18
   }];
   
   constructor(
@@ -75,7 +75,9 @@ export class ScorecardPage {
     this.slides.lockSwipes(true);
 
   }  
-    // id = window.localStorage.getItem('userId');
+    
+    
+    
     basketRes = {
       basketNumber: [],
       par: [],
@@ -99,7 +101,13 @@ export class ScorecardPage {
         // console.log("basketsArray", this.basketsArray);
         this.slides.lockSwipes(false);
         this.slides.slideTo(this.slides.getActiveIndex() +1 );
-        this.slides.lockSwipes(true);  
+        this.slides.lockSwipes(true);
+        // if(
+        //   this.basketRes.par === NaN || 
+        //   this.basketRes.throws >= 0 || 
+        //   this.basketRes.throws === NaN ) {
+        //     return alert("Please enter Par and/or Throws");
+        //   }
       } else {
           //use has finished playing round of disc golf
           //push date and userId into basketRes

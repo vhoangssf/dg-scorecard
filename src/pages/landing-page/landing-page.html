@@ -4,20 +4,22 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-
+<ion-header >
+  <div padding-top>
   <!--<ion-navbar>-->
-  <!--  <ion-title>LandingPage</ion-title>-->
+    <ion-title text-center color="#ffffff">Disc Golf<br>Scorecard</ion-title>
   <!--</ion-navbar>-->
-
+  </div>
 </ion-header>
 
 
-<ion-content padding>
-  <button ion-button color="secondary" round (click)="goRegister()">
+<ion-content text-center padding>
+  <div padding-top>
+  <button ion-button color="secondary" round block (click)="goLogin()">
+     Login 
+  </button><br>
+  <button ion-button color="secondary" round block (click)="goRegister()">
     Register
   </button>
-  <button ion-button color="secondary" round (click)="goLogin()">
-    Login
-  </button>
+  </div>
 </ion-content>

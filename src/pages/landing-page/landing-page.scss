@@ -1,3 +1,19 @@
 page-landing-page {
-
+    ion-header {
+        // color: #ffffff;
+    }
+    .toolbar-title {
+        color: #ffffff;
+        font-family: "Arial";
+        font-size: 20px;
+        font-weight: bold;
+    }
+    ion-content {
+        background: url('https://cdn.csgazette.biz/cache/r960-4559f56a906dd5f3c1aafbc2f02a5a85.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    } 
+    
 }
+

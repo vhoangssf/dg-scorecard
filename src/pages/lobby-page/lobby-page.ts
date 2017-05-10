@@ -40,8 +40,9 @@ export class LobbyPage {
   
   userLogout() {
     this.appUser.logout(window.localStorage.token)
-    window.localStorage.token = null;
-    window.localStorage.userId = null;
+    window.localStorage.clear();
+    // window.localStorage.token = null;
+    // window.localStorage.userId = null;
     this.navCtrl.setRoot(LandingPage);
     console.log('User has logged out');
   }

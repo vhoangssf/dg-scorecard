@@ -14,10 +14,10 @@
 
 
 <ion-content padding color="secondary">
-  <ion-item (click)="goToResult(this.scorecard)">
+  <ion-item (click)="goToResult(score)" *ngFor="let score of scorecardArray">
     Scorecard
     <ion-note style="float: right;">
-      {{scorecard.date | date: 'dd-MMM-yyyy hh:mm a'}}
+      {{score.createDate | date: 'dd-MMM-yyyy hh:mm a'}}
     </ion-note>
   </ion-item>
 </ion-content>

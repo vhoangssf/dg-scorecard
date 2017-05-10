@@ -81,39 +81,28 @@ export class ScorecardPage {
       par: [],
       throws: [],
       score: [],
-      userId: "string",
-      createDate: "date"
+      userId: "",
+      createDate: ""
     };
   
     slideNext(basket) {
-      //two way binding, combine the par and throws into a local object
-      // let basketRes = {
-      //   par: parseInt(basket.par),
-      //   throws: parseInt(basket.throws),
-      //   score: basket.throws - basket.par,
-      // }
-      
-      
-      
       console.log(basket);
       // this.basketsArray.push(basketRes);
       this.basketRes.basketNumber.push(this.slides.getActiveIndex() + 1);
       this.basketRes.par.push(parseInt(basket.par));
       this.basketRes.throws.push(parseInt(basket.throws));
       this.basketRes.score.push(basket.throws - basket.par);
-      
       console.log(this.basketRes);
       console.log(this.slides.getActiveIndex());
+      
       if(this.slides.getActiveIndex() + 1 !== this.apiBaskets.length) {
         // console.log("basketsArray", this.basketsArray);
         this.slides.lockSwipes(false);
         this.slides.slideTo(this.slides.getActiveIndex() +1 );
         this.slides.lockSwipes(true);  
       } else {
-          //create the date for finishing the round of disc golf, 
-          //send user to results page along with the data
-          // let scorecard = this.createDate(this.basketsArray);
-          
+          //use has finished playing round of disc golf
+          //push date and userId into basketRes
           this.basketRes.createDate = new Date().toISOString();
           this.basketRes.userId = window.localStorage.userId;
           let token = window.localStorage.getItem('token');
@@ -121,7 +110,8 @@ export class ScorecardPage {
             .map(res => res.json())
             .subscribe(res =>{
               this.navCtrl.setRoot(ResultsPage, {
-                results: this.basketRes
+                // results: this.basketRes
+                scorecard: this.basketRes
             });
             }, error => {
               alert("Scorecard Results Error");

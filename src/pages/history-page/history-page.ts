@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
 import { ResultsPage } from '../results-page/results-page';
+
+import { Scorecard } from '../../providers/scorecard';
+
 /**
  * Generated class for the HistoryPage page.
  *
@@ -13,13 +17,23 @@ import { ResultsPage } from '../results-page/results-page';
   templateUrl: 'history-page.html',
 })
 export class HistoryPage {
-  scorecard: any = [];
+  scorecardArray: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    
-    // let date = this.scorecard.date;
-    // console.log("date reassign", date);
-    
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public _scorecard: Scorecard
+    ) {
+      
+      //uses service
+      this._scorecard.getScorecard(window.localStorage.getItem("token"))
+      .map(res => res.json())
+      .subscribe(res => {
+        this.scorecardArray = res;
+        console.log("scorecard from history page", this.scorecardArray);
+      }, error => {
+        alert("Something went wrong with retrieving the results of the round")
+      });
   }
   
   
@@ -27,14 +41,17 @@ export class HistoryPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad HistoryPage');
     //retrieve locally stored data
-    this.scorecard = JSON.parse(window.localStorage.getItem("scorecard"));
-    console.log("scorecard", this.scorecard);
-    console.log("date", this.scorecard.date);
+    // this.scorecard = JSON.parse(window.localStorage.getItem("scorecard"));
+    // console.log("scorecard", this.scorecard);
+    // console.log("date", this.scorecard.date);
+    
+    
+    
   }
   
   goToResult(scorecard) {
     this.navCtrl.push(ResultsPage, {
-      results: scorecard
+      scorecard: scorecard
     });
   }
   

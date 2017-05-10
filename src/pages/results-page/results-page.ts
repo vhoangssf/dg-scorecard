@@ -16,7 +16,6 @@ import { LobbyPage } from '../lobby-page/lobby-page';
 })
 export class ResultsPage {
 
-  results: any;
   sum: any;
   scorecard: any;
   
@@ -24,15 +23,9 @@ export class ResultsPage {
     public navCtrl: NavController, 
     public navParams: NavParams
     ) {
-      this.scorecard = navParams.get('results');
-      console.log(navParams.get('results'));
+      this.scorecard = navParams.get('scorecard');
+      console.log(navParams.get('scorecard'));
       this.sum = this.totalScore(this.scorecard);
-      
-      //store the scorecard in the local storage
-      //window.localStorage.setItem("scorecard", JSON.stringify(this.scorecard));
-      
-     
-      
   }
   
   // calculate total score

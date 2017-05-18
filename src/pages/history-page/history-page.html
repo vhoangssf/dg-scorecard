@@ -14,7 +14,7 @@
 
 
 <ion-content padding color="secondary">
-  <ion-item (click)="goToResult(score)" *ngFor="let score of scorecardArray">
+  <ion-item (click)="goToResult(score)" *ngFor="let score of currentScore">
     Scorecard
     <ion-note style="float: right;">
       {{score.createDate | date: 'dd-MMM-yyyy hh:mm a'}}

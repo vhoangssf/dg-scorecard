@@ -23,15 +23,18 @@ export class ResultsPage {
     public navCtrl: NavController, 
     public navParams: NavParams
     ) {
-      this.scorecard = navParams.get('scorecard');
-      console.log(navParams.get('scorecard'));
+      this.scorecard = this.navParams.get('currentScore');
+      console.log("YO", this.navParams.get('currentScore'));
+      console.log("scorecard results", this.scorecard.Scorecard)
       this.sum = this.totalScore(this.scorecard);
   }
   
   // calculate total score
+  // Total score is currently hardcoded to only add up to 9 baskets, please change if 
+  // you decide to allow user to select # of baskets
   totalScore(scorecard) {
     let sum = 0;
-    for(var i = 0; i < scorecard.score.length; i++) {
+    for(var i = 0; i < 8; i++) {
       sum = sum + scorecard.score[i];
     }
     console.log("sum", sum);

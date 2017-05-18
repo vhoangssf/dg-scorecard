@@ -18,7 +18,6 @@ import { AppUser } from '../../providers/app-user';
   templateUrl: 'lobby-page.html',
 })
 export class LobbyPage {
-
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -29,6 +28,7 @@ export class LobbyPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LobbyPage');
+    
   }
   
   startScorecard() {

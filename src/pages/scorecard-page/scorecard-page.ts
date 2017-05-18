@@ -19,9 +19,7 @@ import { Scorecard } from '../../providers/scorecard';
 })
 export class ScorecardPage {
   @ViewChild(Slides) slides: Slides;
-  // par: number;
-  // throws: number;
-  // basketsArray: any = [];
+
   apiBaskets = [{
   "basketTitle": 1
   },{
@@ -40,7 +38,7 @@ export class ScorecardPage {
   "basketTitle": 8
   },{
   "basketTitle": 9
-  },{
+  /*},{
   "basketTitle": 10
   },{
   "basketTitle": 11
@@ -57,7 +55,7 @@ export class ScorecardPage {
   },{
   "basketTitle": 17
   },{
-  "basketTitle": 18
+  "basketTitle": 18*/
   }];
   
   constructor(
@@ -76,8 +74,6 @@ export class ScorecardPage {
 
   }  
     
-    
-    
     basketRes = {
       basketNumber: [],
       par: [],
@@ -86,56 +82,49 @@ export class ScorecardPage {
       userId: "",
       createDate: ""
     };
-  
+    
+    // When a user has entered in par and throws, user can click
+    // and move onto next slide and data is pushed into corresponding arrays
     slideNext(basket) {
-      console.log(basket);
-      // this.basketsArray.push(basketRes);
-      this.basketRes.basketNumber.push(this.slides.getActiveIndex() + 1);
-      this.basketRes.par.push(parseInt(basket.par));
-      this.basketRes.throws.push(parseInt(basket.throws));
-      this.basketRes.score.push(basket.throws - basket.par);
-      console.log(this.basketRes);
-      console.log(this.slides.getActiveIndex());
-      
-      if(this.slides.getActiveIndex() + 1 !== this.apiBaskets.length) {
-        // console.log("basketsArray", this.basketsArray);
-        this.slides.lockSwipes(false);
-        this.slides.slideTo(this.slides.getActiveIndex() +1 );
-        this.slides.lockSwipes(true);
-        // if(
-        //   this.basketRes.par === NaN || 
-        //   this.basketRes.throws >= 0 || 
-        //   this.basketRes.throws === NaN ) {
-        //     return alert("Please enter Par and/or Throws");
-        //   }
-      } else {
-          //use has finished playing round of disc golf
-          //push date and userId into basketRes
-          this.basketRes.createDate = new Date().toISOString();
-          this.basketRes.userId = window.localStorage.userId;
-          let token = window.localStorage.getItem('token');
-          this.scorecardService.saveScorecard(this.basketRes, token)
-            .map(res => res.json())
-            .subscribe(res =>{
-              this.navCtrl.setRoot(ResultsPage, {
-                // results: this.basketRes
-                scorecard: this.basketRes
-            });
-            }, error => {
-              alert("Scorecard Results Error");
-              console.log(error);
+      // console.log( isNaN( this.basketRes.par.push(parseInt(basket.par)) ) )
+      // if ( 
+      //   isNaN( this.basketRes.par.push(parseInt(basket.par)) ) === true 
+        // isNaN( this.basketRes.throws.push(parseInt(basket.throws)) ) === true 
+      // ) {
+      //   return alert("Please enter valid Par and/or Throws");
+        // } else {
+          console.log(basket);
+          this.basketRes.basketNumber.push(this.slides.getActiveIndex() + 1);
+          this.basketRes.par.push(parseInt(basket.par));
+          this.basketRes.throws.push(parseInt(basket.throws));
+          this.basketRes.score.push(basket.throws - basket.par);
+          console.log(this.basketRes);
+          console.log(this.slides.getActiveIndex());
+          
+          if(this.slides.getActiveIndex() + 1 !== this.apiBaskets.length) {
+            this.slides.lockSwipes(false);
+            this.slides.slideTo(this.slides.getActiveIndex() +1 );
+            this.slides.lockSwipes(true);
             
-        });
+          } else {
+              //user has finished playing round of disc golf
+              //push date and userId into basketRes with the arrays
+              this.basketRes.createDate = new Date().toISOString();
+              this.basketRes.userId = window.localStorage.userId;
+              let token = window.localStorage.getItem('token');
+              this.scorecardService.saveScorecard(this.basketRes, token)
+                .map(res => res.json())
+                .subscribe(res =>{
+                  console.log("basket", this.basketRes);
+                  this.navCtrl.setRoot(ResultsPage, {
+                    scorecard: this.basketRes
+                });
+                }, error => {
+                  alert("Scorecard Results Error");
+                  console.log(error);
+                
+            });
       }
-      
-    }
-
-  //create new object and date created
-  // createDate(results){
-  //   let scorecard = {
-  //     date: new Date().toISOString(),
-  //     results: results
-  //   };
-  //   return scorecard;
-  // }
+    }  
+   // }
 }
